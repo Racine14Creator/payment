@@ -37,18 +37,18 @@ if(isset($_POST['registerAdm'])) {
 
     // Check if the email is not yet used
 
-    $sql = "SELECT * FROM admin  WHERE email = '$email'";
+    $sql = "SELECT * FROM admin  WHERE username = '$username' or email = '$email'";
     $run_sql = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($run_sql);
     $em = $row['email'];
 
-    if($email == $row['email']) {array_push($error, "Email is already used! ");}
+    if($email == $row['email']) {array_push($error, "Username or Email is already used! ");}
     // To check the username
     
-    $sqlUsername = "SELECT username FROM admin  WHERE username = '$username'";
-    $run_sqlUsername = mysqli_query($con, $sqlUsername);
-    $row = mysqli_fetch_array($run_sqlUsername);
-    $username = $row['username'];
+    // $sqlUsername = "SELECT username FROM admin  WHERE username = '$username'";
+    // $run_sqlUsername = mysqli_query($con, $sqlUsername);
+    // $row = mysqli_fetch_array($run_sqlUsername);
+    // $username = $row['username'];
 
     if($_POST['username'] == $row['username']) {array_push($error, "This username is already taken!");}
 
